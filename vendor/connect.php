@@ -1,5 +1,8 @@
 <?php
     
-    require_once 'connect.php';
-    
+    $connect = mysqli_connect('localhost', 'root', '', 'test');
+
+    if (!$connect) {
+        die('Error connect to DataBase');
+    }
 ?>

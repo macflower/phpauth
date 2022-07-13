@@ -1,3 +1,11 @@
+<?php 
+    session_start();
+
+    if (isset($_SESSION['user'])) {
+        header('Location: profile.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,10 +30,16 @@
         <input type="password" name="password" placeholder="Введите пароль">
         <label>Подтверждение пароля</label>
         <input type="password" name="password_confirm" placeholder="Подтвердите пароль">
-        <button>Войти</button>
+        <button type="submit">Зарегистрироваться</button>
         <p>
             У вас уже есть аккаунт? - <a href="/index.php">авторизируйтесь</a>
         </p>
+        <?php
+            if (isset($_SESSION['message'])) {
+                echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';
+            }
+            unset($_SESSION['message']);
+        ?>
     </form>
 </body>
 </html>
